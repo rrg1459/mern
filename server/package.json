@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Api RESTfull",
   "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
   "author": "Rafael Rodriguez",
   "license": "MIT",
   "dependencies": {
