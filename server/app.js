@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
     author: 'Rafael RodriguezR',
     url: 'http://localhost:3900/'
   }
-    
+
   );
 });
 
