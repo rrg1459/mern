@@ -12,6 +12,6 @@ router.get('/controller-test', ArticleController.test);
 // useful routes
 router.post('/save', ArticleController.save);
 router.get('/articles/:last?', ArticleController.getArticles);
-
+router.get('/article/:id', ArticleController.getArticle);
 
 module.exports = router;

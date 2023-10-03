@@ -100,6 +100,26 @@ const controller = {
       });
   },
 
+  getArticle: async (req, res) => {
+
+    // Recoger el id de la url
+    const articleId = req.params.id;
+
+    // Comprobar que existe
+    if (!articleId || articleId == null) {
+      return res.status(404).send({
+        status: 'error',
+        message: 'No existe el articulo !!!'
+      });
+    }
+    // Buscar el articulo
+    const article = await Article.findById({"_id": articleId});
+    return res.status(200).send({
+      status: 'success',
+      article
+    })
+  }
+
 };  // end controller
 
 module.exports = controller;
