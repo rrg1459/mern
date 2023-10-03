@@ -70,7 +70,28 @@ const controller = {
         message: 'The data is not valid !!!'
       });
     }
-  }
+  },
+
+  getArticles: (req, res) => {
+    Article.find({}).sort({"_id": -1}) // Order from largest to smallest
+      .then((articles) => {
+        if (!articles.length) {
+          return res.status(404).send({
+            message: 'Articles not found !!!'
+          })
+        }
+        return res.status(200).send({
+          status: 'success',
+          articles
+        })
+      })
+      .catch((error) => {
+        return res.status(500).send({
+          status: 'error',
+          message: 'Articles not found !!!'
+        });
+      });
+  },
 
 };  // end controller
 
