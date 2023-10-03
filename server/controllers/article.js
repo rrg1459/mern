@@ -73,7 +73,14 @@ const controller = {
   },
 
   getArticles: (req, res) => {
-    Article.find({}).sort({"_id": -1}) // Order from largest to smallest
+
+    const last = req.params.last;
+    const query = Article.find({}).sort({ "_id": -1 }) // Order from largest to smallest
+    if (last || last != undefined) {
+      query.limit(3);
+    }
+
+    query
       .then((articles) => {
         if (!articles.length) {
           return res.status(404).send({
