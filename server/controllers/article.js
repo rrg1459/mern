@@ -1,7 +1,7 @@
 'use strict'
 
 const validator = require('validator');
-// const Article = require('../models/article');
+const Article = require('../models/article');
 
 const controller = {
 
@@ -41,9 +41,29 @@ const controller = {
     }
 
     if (validate_title && validate_content) {
-      return res.status(200).send({
-        article: params
-      });
+
+      //Create the object to save
+      const article = new Article();
+
+      // Assign values
+      article.title = params.title;
+      article.content = params.content;
+      article.image = null;
+
+      // Save the article
+      article.save()
+        .then(() => {
+          return res.status(200).send({
+            status: 'success',
+            article
+          });
+        })
+        .catch((error) => {
+          return res.status(404).send({
+            status: 'error',
+            message: 'The article has not been saved !!!'
+          });
+        });
     } else {
       return res.status(200).send({
         status: 'error',
