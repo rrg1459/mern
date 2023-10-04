@@ -2,7 +2,7 @@
 
 const validator = require('validator');
 const Article = require('../models/article');
-
+ 
 const controller = {
 
   datosCurso: (req, res) => {
@@ -100,24 +100,29 @@ const controller = {
       });
   },
 
-  getArticle: async (req, res) => {
+  getArticle: (req, res) => {
 
-    // Recoger el id de la url
     const articleId = req.params.id;
+    const query = Article.findById(articleId)
 
-    // Comprobar que existe
-    if (!articleId || articleId == null) {
-      return res.status(404).send({
-        status: 'error',
-        message: 'No existe el articulo !!!'
-      });
-    }
-    // Buscar el articulo
-    const article = await Article.findById({"_id": articleId});
-    return res.status(200).send({
-      status: 'success',
-      article
+    query
+    .then((article) => {
+      if (!article) {
+        return res.status(404).send({
+          message: 'Article not found !!!'
+        })
+      }
+      return res.status(200).send({
+        status: 'success',
+        article
+      })
     })
+    .catch((error) => {
+      return res.status(500).send({
+        status: 'error',
+        message: 'Problem with article ID !!!'
+      });
+    });
   }
 
 };  // end controller
