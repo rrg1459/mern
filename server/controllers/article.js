@@ -2,7 +2,7 @@
 
 const validator = require('validator');
 const Article = require('../models/article');
- 
+
 const controller = {
 
   datosCurso: (req, res) => {
@@ -106,23 +106,73 @@ const controller = {
     const query = Article.findById(articleId)
 
     query
-    .then((article) => {
-      if (!article) {
-        return res.status(404).send({
-          message: 'Article not found !!!'
+      .then((article) => {
+        if (!article) {
+          return res.status(404).send({
+            message: 'Article not found !!!'
+          })
+        }
+        return res.status(200).send({
+          status: 'success',
+          article
         })
-      }
-      return res.status(200).send({
-        status: 'success',
-        article
       })
-    })
-    .catch((error) => {
+      .catch((error) => {
+        return res.status(500).send({
+          status: 'error',
+          message: 'Problem with article ID !!!'
+        });
+      });
+  },
+
+  update: (req, res) => {
+
+    const articleId = req.params.id;
+    const params = req.body;
+
+    try {
+
+      var validate_title = !validator.isEmpty(params.title);
+      var validate_content = !validator.isEmpty(params.content);
+
+      if (validate_title && validate_content) {
+        Article.findOneAndUpdate({ _id: articleId }, params, { new: true })
+          .then((article, err) => {
+            if (err) {
+              console.log(err);
+              return res.status(500).json({
+                message: "Failed to return the article",
+              });
+            }
+            if (!article) {
+              return res.status(404).json({
+                message: "Article not found",
+              });
+            }
+            return res.status(200).send({
+              status: 'success',
+              article
+            });
+          })
+          .catch((err) => {
+            res.status(500).json({
+              status: "Error",
+              message: 'Problem with article ID !!!'
+            });
+          })
+      } else {
+        return res.status(500).send({
+          status: 'error',
+          message: 'The data is not valid !!!'
+        });
+      }
+
+    } catch (err) {
       return res.status(500).send({
         status: 'error',
-        message: 'Problem with article ID !!!'
+        message: 'Missing data to send !!!'
       });
-    });
+    }
   }
 
 };  // end controller
