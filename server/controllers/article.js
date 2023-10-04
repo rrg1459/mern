@@ -173,6 +173,46 @@ const controller = {
         message: 'Missing data to send !!!'
       });
     }
+  },
+
+  delete: (req, res) => {
+
+    const articleId = req.params.id;
+
+    try {
+
+      Article.findOneAndDelete({ _id: articleId })
+        .then((article, err) => {
+          if (err) {
+            console.log(err);
+            return res.status(500).json({
+              message: "Failed to return the article",
+            });
+          }
+          if (!article) {
+            return res.status(404).json({
+              message: "Article not found",
+            });
+          }
+          return res.status(200).send({
+            status: 'success',
+            message: "Article deleted",
+            article
+          });
+        })
+        .catch((err) => {
+          res.status(500).json({
+            status: "Error",
+            message: 'Problem with article ID !!!'
+          });
+        })
+
+    } catch (err) {
+      return res.status(500).send({
+        status: 'error',
+        message: 'Missing data to send !!!'
+      });
+    }
   }
 
 };  // end controller
