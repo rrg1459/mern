@@ -1,6 +1,9 @@
 'use strict'
 
 const validator = require('validator');
+var fs = require('fs');
+var path = require('path');
+
 const Article = require('../models/article');
 
 const controller = {
@@ -213,7 +216,82 @@ const controller = {
         message: 'Missing data to send !!!'
       });
     }
-  }
+  },
+
+  upload: (req, res) => {
+    // Configure module connect multiparty router/article.js (done)
+
+    var file_name = 'Imagen no subida...';
+
+    if (!req.files) {
+      return res.status(404).send({
+        status: 'error',
+        message: file_name
+      });
+    }
+
+    var file_path = req.files.image.path;
+
+    // * in windows
+    // * var file_split = file_path.split('\\');
+
+    // * in linux
+    var file_split = file_path.split('/');
+
+    file_name = file_split[2];
+
+    var extension_split = file_name.split('\.');
+    var file_ext = extension_split[1];
+
+    if (file_ext != 'png' && file_ext != 'jpg' && file_ext != 'jpeg' && file_ext != 'gif') {
+
+      // delete file
+      fs.unlink(file_path, (err) => {
+        return res.status(200).send({
+          status: 'error',
+          message: 'Image extension is invalid !!!'
+        });
+      });
+
+    } else {
+
+      const articleId = req.params.id;
+
+      if (articleId) {
+        Article.findOneAndUpdate({ _id: articleId }, { image: file_name }, { new: true })
+          .then((articleUpdated, err) => {
+
+            if (err) {
+              console.log(err);
+              return res.status(500).json({
+                message: "Failed to return the article",
+              });
+            }
+            if (!articleUpdated) {
+              return res.status(404).json({
+                message: "Article not found",
+              });
+            }
+            return res.status(200).send({
+              status: 'success',
+              article: articleUpdated
+            });
+          })
+          .catch((err) => {
+            res.status(500).json({
+              status: "Error",
+              message: 'Problem with article ID !!!'
+            });
+          })
+      } else {
+        return res.status(200).send({
+          status: 'success',
+          image: file_name
+        });
+      }
+
+    }
+  }, // end upload file
 
 };  // end controller
 
