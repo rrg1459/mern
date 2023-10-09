@@ -12,7 +12,6 @@ const MyComponent = () => {
       <ol>
         {
           recipe.ingredients.map((ingredient, i) => {
-            console.log(ingredient);
             return (
               <li key={i}>
                 {ingredient}

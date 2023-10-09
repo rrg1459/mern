@@ -1,6 +1,7 @@
 import logo from './assets/images/logo.svg';
 import './assets/css/App.css';
 import MyComponent from './components/MyComponent';
+import Movies from './components/Movies';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <section className="components">
           <MyComponent />
         </section>
+        <Movies />
       </header>
     </div>
   );
