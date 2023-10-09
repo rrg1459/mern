@@ -1,11 +1,9 @@
-import logo from './assets/images/logo.svg';
 import './assets/css/App.css';
-import MyComponent from './components/MyComponent';
-import Movies from './components/Movies';
 import Header from './components/Header';
 import Slider from './components/Slider';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
+import TestSection from './components/TestSection';
 
 function App() {
   return (
@@ -14,18 +12,13 @@ function App() {
       <Slider />
 
       <div className="center">
-        <section id="content">
-          <img src={logo} className="App-logo" alt="logo" />
-          <section className="components">
-            <MyComponent />
-            <Movies />
-          </section>
-        </section>
+
+        <TestSection />
 
         <Sidebar />
         <div className="clearfix"></div>
 
-      </div> {/* END DIV CENTER */}
+      </div>
 
       <Footer />
 
