@@ -4,6 +4,8 @@ import MyComponent from './components/MyComponent';
 import Movies from './components/Movies';
 import Header from './components/Header';
 import Slider from './components/Slider';
+import Sidebar from './components/Sidebar';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -11,13 +13,22 @@ function App() {
       <Header />
       <Slider />
 
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <section className="components">
-          <MyComponent />
+      <div className="center">
+        <section id="content">
+          <img src={logo} className="App-logo" alt="logo" />
+          <section className="components">
+            <MyComponent />
+            <Movies />
+          </section>
         </section>
-        <Movies />
-      </header>
+
+        <Sidebar />
+        <div className="clearfix"></div>
+
+      </div> {/* END DIV CENTER */}
+
+      <Footer />
+
     </div>
   );
 }
