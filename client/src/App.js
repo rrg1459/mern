@@ -6,10 +6,17 @@ import Footer from './components/Footer';
 import TestSection from './components/TestSection';
 
 function App() {
+
+  const btnString = "to blog"
+
   return (
     <div className="App">
       <Header />
-      <Slider />
+
+      <Slider
+        title="Welcome to MERN app"
+        btn={btnString}
+      />
 
       <div className="center">
 
