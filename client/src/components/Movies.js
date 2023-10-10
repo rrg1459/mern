@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Movie from "./Movie";
 const Movies = () => {
 
   const name = "Rafael";
@@ -22,22 +23,7 @@ const Movies = () => {
       <p>Selection of favorite movies of: {name}</p>
 
       <div id="articles" className="movies">
-
-        {
-          movies.map((movie, i) => {
-
-            return (
-              <article key={i} className="article-item" id="article-template">
-                <div className="image-wrap"><img src={movie.image} alt={movie.title} /></div>
-                <h2>{movie.title}</h2>
-                <span className="date">5 minutes ago</span>
-                <a href="/">Read more</a>
-                <div className="clearfix"></div>
-              </article>
-            )
-          })
-        }
-
+        { movies.map((movie, i) => <Movie movie={movie} key={i} /> ) }
       </div>
 
 
