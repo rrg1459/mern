@@ -22,6 +22,16 @@ const Movies = () => {
     setMovies([...movies]);
   }
 
+  const myFavorite = (movie) => {
+    setFavorite(movie);
+  }
+
+  const pStyle = {
+    background: 'green',
+    color: 'white',
+    padding: '10px'
+  }
+
   return (
     <div id="content" className="movies">
 
@@ -30,8 +40,15 @@ const Movies = () => {
 
       <p><button onClick={changeTitle}>Change title</button></p>
 
+      {(favorite.title &&
+        <p style={pStyle}>
+          <strong>The favorite movie is: </strong>
+          <span>{favorite.title}</span>
+        </p>
+      )}
+
       <div id="articles" className="movies">
-        { movies.map((movie, i) => <Movie movie={movie} key={i} /> ) }
+        {movies.map((movie, i) => <Movie movie={movie} bookmarkFavorite={myFavorite} key={i} />)}
       </div>
 
     </div>
