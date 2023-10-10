@@ -1,7 +1,6 @@
 // import React, { useState } from "react";
 import { useState } from "react";
 import MyComponent from './MyComponent';
-import Movies from './Movies';
 
 const TestSection = () => {
 
@@ -36,7 +35,6 @@ const TestSection = () => {
       <section className="components">
 
         <MyComponent />
-        <Movies />
 
       </section>
 

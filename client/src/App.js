@@ -3,13 +3,13 @@ import Header from './components/Header';
 import Slider from './components/Slider';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
-import TestSection from './components/TestSection';
+import Movies from './components/Movies';
 
 function App() {
 
   const btnString = "to blog"
 
-  return (
+  return ( 
     <div className="App">
       <Header />
 
@@ -20,7 +20,7 @@ function App() {
 
       <div className="center">
 
-        <TestSection />
+        <Movies />
 
         <Sidebar />
         <div className="clearfix"></div>
