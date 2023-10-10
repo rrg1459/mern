@@ -349,7 +349,8 @@ textarea{
 
 .subheader{
   font-size: 38px;
-  border-bottom: 1px solid #eee;
+  color: #8051DA;
+  border-bottom: 1px solid #8051DA;
   padding-bottom: 10px;
 }
 

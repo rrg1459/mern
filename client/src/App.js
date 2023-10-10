@@ -3,17 +3,24 @@ import Header from './components/Header';
 import Slider from './components/Slider';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
-import TestSection from './components/TestSection';
+import Movies from './components/Movies';
 
 function App() {
-  return (
+
+  const btnString = "to blog"
+
+  return ( 
     <div className="App">
       <Header />
-      <Slider />
+
+      <Slider
+        title="Welcome to MERN app"
+        btn={btnString}
+      />
 
       <div className="center">
 
-        <TestSection />
+        <Movies />
 
         <Sidebar />
         <div className="clearfix"></div>
