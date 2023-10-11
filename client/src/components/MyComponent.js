@@ -1,4 +1,4 @@
-const MyComponent = () => {
+const MyComponent = ({ greetings }) => {
 
   const recipe = {
     name: 'Pizza',
@@ -21,6 +21,14 @@ const MyComponent = () => {
         }
       </ol>
       <hr />
+
+      {greetings &&
+        <>
+          <h1>From a prop:</h1>
+          <h3>{greetings}</h3>
+        </>
+      }
+
     </div>
   );
 }

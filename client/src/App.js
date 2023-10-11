@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Slider from './components/Slider';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
-import Movies from './components/Movies';
+import Router from './Router';
 
 function App() {
 
@@ -20,7 +20,7 @@ function App() {
 
       <div className="center">
 
-        <Movies />
+        <Router />
 
         <Sidebar />
         <div className="clearfix"></div>
