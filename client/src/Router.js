@@ -1,7 +1,7 @@
 // import React, { Component } from 'react';
 import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
 
-import TestSection from './components/TestSection';
+import Blog from './components/Blog';
 import MyComponent from './components/MyComponent';
 import Error from './components/Error';
 import Header from './components/Header';
@@ -42,7 +42,7 @@ const Router = () => {
 
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/test" element={<TestSection />} />
+        <Route path="/blog" element={<Blog />} />
         <Route path="/second" element={<MyComponent />} />
         <Route path="/no-component" element={(
           <>
