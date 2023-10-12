@@ -1,9 +1,11 @@
-const Slider = ({ title, btn }) => {
+const Slider = ({ title, btn, size }) => {
 
   return (
-    <div id="slider" className="slider-big">
+    <div id="slider" className={size}>
       <h1>{title}</h1>
-      <a href="/" className="btn-white">{btn}</a>
+      {btn &&
+        <a href="/" className="btn-white">{btn}</a>
+      }
     </div>
   );
 }
