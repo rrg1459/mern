@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import logo from '../assets/images/logo.svg';
 
 const Header = () => {
@@ -16,21 +18,11 @@ const Header = () => {
         { /*-- MENU --*/}
         <nav id="menu">
           <ul>
-            <li>
-              <a href="/" className="active">Start</a>
-            </li>
-            <li>
-              <a href="/" className="active">Blog</a>
-            </li>
-            <li>
-              <a href="/" className="active">Form</a>
-            </li>
-            <li>
-              <a href="/" className="active">Movies</a>
-            </li>
-            <li>
-              <a href="/" className="active">Page 2</a>
-            </li>
+            <li><Link to="/" activeclassname="active">Start</Link></li>
+            <li><Link to="/test" activeclassname="active">Blog</Link></li>
+            <li><Link to="/second" activeclassname="active">Form</Link></li>
+            <li><Link to="/no-component" activeclassname="active">Movies</Link></li>
+            <li><Link to="/optionals/Rafael" activeclassname="active">Page 2</Link></li>
           </ul>
         </nav>
 
