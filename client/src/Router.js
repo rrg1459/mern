@@ -3,16 +3,12 @@ import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
 
 import TestSection from './components/TestSection';
 import MyComponent from './components/MyComponent';
-import Movies from './components/Movies';
 import Error from './components/Error';
 import Header from './components/Header';
-import Slider from './components/Slider';
-import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
+import Home from './components/Home';
 
 const Router = () => {
-
-  const btnString = "to blog"
 
   const OptionalRoute = () => {
     const params = useParams();
@@ -42,36 +38,26 @@ const Router = () => {
 
       <Header />
 
-      <Slider
-        title="Welcome to MERN app"
-        btn={btnString}
-      />
+      <Routes>
 
-      <div className="center">
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/test" element={<TestSection />} />
+        <Route path="/second" element={<MyComponent />} />
+        <Route path="/no-component" element={(
+          <>
+            <section id="content">
+              <h1>From the page No Component</h1>
+              <MyComponent greetings="Hi folk" />
+            </section>
+          </>
+        )} />
+        <Route path="/optionals/:firstName/:lastName?" Component={OptionalRoute} />
+        <Route path="*" element={<Error />} />
 
-        <Routes>
+      </Routes>
 
-          <Route path="/" element={<Movies />} />
-          <Route path="/home" element={<Movies />} />
-          <Route path="/test" element={<TestSection />} />
-          <Route path="/second" element={<MyComponent />} />
-          <Route path="/no-component" element={(
-            <>
-              <section id="content">
-                <h1>From the page No Component</h1>
-                <MyComponent greetings="Hi folk" />
-              </section>
-            </>
-          )} />
-          <Route path="/optionals/:firstName/:lastName?" Component={OptionalRoute} />
-          <Route path="*" element={<Error />} />
-
-        </Routes>
-
-        <Sidebar />
-        <div className="clearfix"></div>
-
-      </div>
+      <div className="clearfix"></div>
 
       <Footer />
 
