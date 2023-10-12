@@ -1,11 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link, useResolvedPath } from 'react-router-dom';
 
 import logo from '../assets/images/logo.svg';
 
 const Header = () => {
 
+  const { pathname } = useResolvedPath();
+
   return (
     <header id="header">
+
       <div className="center">
         { /*-- LOGO --*/}
         <div id="logo">
@@ -18,11 +21,11 @@ const Header = () => {
         { /*-- MENU --*/}
         <nav id="menu">
           <ul>
-            <li><Link to="/" activeclassname="active">Start</Link></li>
-            <li><Link to="/test" activeclassname="active">Blog</Link></li>
-            <li><Link to="/second" activeclassname="active">Form</Link></li>
-            <li><Link to="/no-component" activeclassname="active">Movies</Link></li>
-            <li><Link to="/optionals/Rafael" activeclassname="active">Page 2</Link></li>
+            <li><Link to="/" className={pathname === '/' ? "active" : ''}>Start</Link></li>
+            <li><Link to="/test"  className={pathname === '/test' ? "active" : ''}>Blog</Link></li>
+            <li><Link to="/second"  className={pathname === '/second' ? "active" : ''}>Form</Link></li>
+            <li><Link to="/no-component"  className={pathname === '/no-component' ? "active" : ''}>Movies</Link></li>
+            <li><Link to="/optionals/Rafael"  className={pathname === '/optionals/Rafael' ? "active" : ''}>Page 2</Link></li>
           </ul>
         </nav>
 

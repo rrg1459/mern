@@ -52,6 +52,7 @@ const Router = () => {
         <Routes>
 
           <Route path="/" element={<Movies />} />
+          <Route path="/home" element={<Movies />} />
           <Route path="/test" element={<TestSection />} />
           <Route path="/second" element={<MyComponent />} />
           <Route path="/no-component" element={(
