@@ -23,8 +23,8 @@ const Header = () => {
           <ul>
             <li><Link to="/" className={pathname === '/' ? "active" : ''}>Start</Link></li>
             <li><Link to="/blog"  className={pathname === '/test' ? "active" : ''}>Blog</Link></li>
-            <li><Link to="/second"  className={pathname === '/second' ? "active" : ''}>Form</Link></li>
-            <li><Link to="/no-component"  className={pathname === '/no-component' ? "active" : ''}>Movies</Link></li>
+            <li><Link to="/form"  className={pathname === '/form' ? "active" : ''}>Form</Link></li>
+            <li><Link to="/movies"  className={pathname === '/movies' ? "active" : ''}>Movies</Link></li>
             <li><Link to="/optionals/Rafael"  className={pathname === '/optionals/Rafael' ? "active" : ''}>Page 2</Link></li>
           </ul>
         </nav>

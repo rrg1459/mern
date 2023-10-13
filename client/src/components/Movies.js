@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Movie from "./Movie";
+import Slider from "./Slider";
+import Sidebar from "./Sidebar";
 
 const Movies = () => {
 
@@ -40,20 +42,30 @@ const Movies = () => {
     <p>No favorite movie</p>)
 
   return (
-    <div id="content" className="movies">
+    <>
+      <Slider
+        title="Form"
+        size="slider-small"
+      />
+      <div className="center">
+        <div id="content" className="movies">
 
-      <h2 className="subheader">Movies</h2>
-      <p>Selection of favorite movies of: {name}</p>
+          <h2 className="subheader">Movies</h2>
+          <p>Selection of favorite movies of: {name}</p>
 
-      <p><button onClick={changeTitle}>Change title</button></p>
+          <p><button onClick={changeTitle}>Change title</button></p>
 
-      {favoriteMovie}
+          {favoriteMovie}
 
-      <div id="articles" className="movies">
-        {movies.map((movie, i) => <Movie movie={movie} bookmarkFavorite={myFavorite} key={i} />)}
+          <div id="articles" className="movies">
+            {movies.map((movie, i) => <Movie movie={movie} bookmarkFavorite={myFavorite} key={i} />)}
+          </div>
+
+        </div>
+        <Sidebar />
       </div>
+    </>
 
-    </div>
   );
 }
 
