@@ -11,23 +11,34 @@ const Articles = () => {
       .then(res => {
         setArticles(res.data.articles);
         setStatus('success');
-        console.log('xxx res.data-->: ', res.data);
       });
   }, [])
 
   return (
     <div id="articles">
       <div id="content">
-          {/* ***  */}
-          {status === 'success' &&
-            <div>
-              {articles.map((article) => {
-                return (
-                  <h1 key={article._id}>{article.title}</h1>
-                  )
-              })}
-            </div>}
-        </div>
+        {articles.length > 0 && status === 'success' &&
+          <div>
+            {articles.map((article) => {
+              return (
+                <h1 key={article._id}>{article.title}</h1>
+              )
+            })}
+          </div>
+        }
+        {articles.length === 0 && status === 'success' &&
+          <div id="articles">
+            <h1>No articles to show</h1>
+          </div>
+        }
+        {status !== 'success' &&
+          <div id="articles">
+            <h2 className="subheader">Loading...</h2>
+            <p>Wait while the content is loading</p>
+          </div>
+        }
+
+      </div>
     </div>
   );
 }
