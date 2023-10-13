@@ -7,6 +7,8 @@ import Error from './components/Error';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
+import Form from './components/Form';
+import Movies from './components/Movies';
 
 const Router = () => {
 
@@ -43,6 +45,8 @@ const Router = () => {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/form" element={<Form />} />
+        <Route path="/movies" element={<Movies />} />
         <Route path="/second" element={<MyComponent />} />
         <Route path="/no-component" element={(
           <>
