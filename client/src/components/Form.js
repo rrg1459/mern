@@ -58,7 +58,7 @@ const Form = () => {
             </div>
           }
 
-          <form className="mid-form" onSubmit={getForm}>
+          <form className="mid-form" onSubmit={getForm} onChange={getForm}>
             <div className="form-group">
               <label htmlFor="name">Name</label>
               <input type="text" name="name" ref={nameRef} />
