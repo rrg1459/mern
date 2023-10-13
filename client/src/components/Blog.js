@@ -1,5 +1,6 @@
 import Sidebar from "./Sidebar";
 import Slider from "./Slider";
+import Articles from "./Articles";
 
 const Blog = () => {
 
@@ -10,9 +11,8 @@ const Blog = () => {
         size="slider-small"
       />
       <div className="center">
-        <div id="content">
-          {/* ***  */}
-        </div>
+
+        <Articles />
 
         <Sidebar
           blog
