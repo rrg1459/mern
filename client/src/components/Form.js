@@ -1,26 +1,63 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Sidebar from "./Sidebar";
 
 const Form = () => {
 
+  const [user, setUser] = useState({});
+
   const nameRef = useRef();
-	const lastNameRef = useRef();
-	const bioRef = useRef();
-	const genderManRef = useRef();
-	const genderWomanRef = useRef();
-	const genderOtherRef = useRef();
+  const lastNameRef = useRef();
+  const bioRef = useRef();
+  const genderManRef = useRef();
+  const genderWomanRef = useRef();
+  const genderOtherRef = useRef();
 
   const getForm = (e) => {
     e.preventDefault();
-    console.log('xxx nameRef-->: ', nameRef.current.value);
+
+    var gender = '';
+
+    if (genderManRef.current.checked) {
+      gender = genderManRef.current.value;
+    } else if (genderWomanRef.current.checked) {
+      gender = genderWomanRef.current.value;
+    } else {
+      gender = genderOtherRef.current.value;
+    };
+
+    setUser({
+      name: nameRef.current.value,
+      lastName: lastNameRef.current.value,
+      bio: bioRef.current.value,
+      gender: gender
+    });
+
   }
 
   return (
     <div id="form">
       <div className="center">
         <div id="content">
-          {/* ***  */}
+
           <h1 className="subheader">Form</h1>
+
+          {user.name &&
+            <div id="user-data">
+              {user.name &&
+                <p>Name: <strong>{user.name}</strong></p>
+              }
+              {user.lastName &&
+                <p>Las Name: <strong>{user.lastName}</strong></p>
+              }
+              {user.bio &&
+                <p>Biography: <strong>{user.bio}</strong></p>
+              }
+              {user.gender &&
+                <p>Gender: <strong>{user.gender}</strong></p>
+              }
+            </div>
+          }
+
           <form className="mid-form" onSubmit={getForm}>
             <div className="form-group">
               <label htmlFor="name">Name</label>
@@ -38,9 +75,9 @@ const Form = () => {
             </div>
 
             <div className="form-group radibuttons">
-              <input type="radio" name="gender" value="hombre" ref={genderManRef} /> Man
-              <input type="radio" name="gender" value="mujer" ref={genderWomanRef} /> Woman
-              <input type="radio" name="gender" value="otro" ref={genderOtherRef} /> Otthe
+              <input type="radio" name="gender" value="name" ref={genderManRef} /> Man
+              <input type="radio" name="gender" value="woman" ref={genderWomanRef} /> Woman
+              <input type="radio" name="gender" value="other" ref={genderOtherRef} /> Other
             </div>
 
             <div className="clearfix"></div>
