@@ -21,7 +21,20 @@ const Articles = () => {
           <div>
             {articles.map((article) => {
               return (
-                <h1 key={article._id}>{article.title}</h1>
+                <article className="article-item" id="article-template">
+                  <div className="image-wrap">
+                    <img src="https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Paisaje" />
+                  </div>
+
+                  <h2>{article.title}</h2>
+                  <span className="date">
+                  {article.date}
+                  </span>
+                  <a href="/">Leer más</a>
+
+                  <div className="clearfix"></div>
+                </article>
+
               )
             })}
           </div>
