@@ -1,9 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import Moment from 'react-moment';
 import Global from '../Global';
 import imageDefault from '../assets/images/default.png'
-import { Link } from 'react-router-dom';
 
 const Articles = () => {
 
@@ -17,7 +15,7 @@ const Articles = () => {
         setArticles(res.data.articles);
         setStatus('success');
       });
-  }, [url])
+  }, [])
 
   return (
     <div id="articles">
@@ -42,9 +40,10 @@ const Articles = () => {
 
                   <h2>{article.title}</h2>
                   <span className="date">
-                    <Moment fromNow>{article.date}</Moment>
+                    {article.date}
                   </span>
-                  <Link to={'/blog/article/' + article._id}>Read more</Link>
+                  <a href="/">Leer más</a>
+
                   <div className="clearfix"></div>
                 </article>
 
