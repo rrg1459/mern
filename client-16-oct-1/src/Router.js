@@ -9,7 +9,6 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import Form from './components/Form';
 import Movies from './components/Movies';
-import Article from './components/Article';
 
 const Router = () => {
 
@@ -46,7 +45,6 @@ const Router = () => {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/article/:id" element={<Article />} />
         <Route path="/form" element={<Form />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/second" element={<MyComponent />} />
