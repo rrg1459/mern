@@ -10,6 +10,7 @@ import Home from './components/Home';
 import Form from './components/Form';
 import Movies from './components/Movies';
 import Article from './components/Article';
+import Search from './components/Search';
 
 const Router = () => {
 
@@ -49,6 +50,7 @@ const Router = () => {
         <Route path="/blog/article/:id" element={<Article />} />
         <Route path="/form" element={<Form />} />
         <Route path="/movies" element={<Movies />} />
+        <Route path="/blog/search/:search" element={<Search />} />
         <Route path="/second" element={<MyComponent />} />
         <Route path="/no-component" element={(
           <>

@@ -5,7 +5,7 @@ import Global from '../Global';
 import imageDefault from '../assets/images/default.png'
 import { Link } from 'react-router-dom';
 
-const Articles = ({ home }) => {
+const Articles = ({ home, search }) => {
 
   const url = Global.url;
   const [articles, setArticles] = useState([]);
@@ -14,18 +14,28 @@ const Articles = ({ home }) => {
   useEffect(() => {
     if (home) {
       axios.get(url + "articles/last")
-      .then(res => {
-        setArticles(res.data.articles);
-        setStatus('success');
-      });
+        .then(res => {
+          setArticles(res.data.articles);
+          setStatus('success');
+        });
+    } else if (search && search !== null && search !== undefined) {
+      axios.get(url + "search/" + search)
+        .then(res => {
+          setArticles(res.data.articles);
+          setStatus('success');
+        })
+        .catch(err => {
+          setArticles([]);
+          setStatus('success');
+        });
     } else {
       axios.get(url + "articles")
-      .then(res => {
-        setArticles(res.data.articles);
-        setStatus('success');
-      });
+        .then(res => {
+          setArticles(res.data.articles);
+          setStatus('success');
+        });
     }
-  }, [url, home])
+  }, [url, home, search])
 
   return (
     <div id="articles">
