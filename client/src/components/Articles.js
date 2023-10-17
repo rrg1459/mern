@@ -5,19 +5,27 @@ import Global from '../Global';
 import imageDefault from '../assets/images/default.png'
 import { Link } from 'react-router-dom';
 
-const Articles = () => {
+const Articles = ({ home }) => {
 
   const url = Global.url;
   const [articles, setArticles] = useState([]);
   const [status, setStatus] = useState(null);
 
   useEffect(() => {
-    axios.get(url + "articles")
+    if (home) {
+      axios.get(url + "articles/last")
       .then(res => {
         setArticles(res.data.articles);
         setStatus('success');
       });
-  }, [url])
+    } else {
+      axios.get(url + "articles")
+      .then(res => {
+        setArticles(res.data.articles);
+        setStatus('success');
+      });
+    }
+  }, [url, home])
 
   return (
     <div id="articles">
