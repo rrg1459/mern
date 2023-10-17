@@ -19,15 +19,17 @@ const Articles = ({ home, search }) => {
           setStatus('success');
         });
     } else if (search && search !== null && search !== undefined) {
-      axios.get(url + "search/" + search)
-        .then(res => {
-          setArticles(res.data.articles);
-          setStatus('success');
-        })
-        .catch(err => {
-          setArticles([]);
-          setStatus('success');
-        });
+      setTimeout(() => {
+        axios.get(url + "search/" + search)
+          .then(res => {
+            setArticles(res.data.articles);
+            setStatus('success');
+          })
+          .catch(err => {
+            setArticles([]);
+            setStatus('success');
+          });
+      }, 1000)
     } else {
       axios.get(url + "articles")
         .then(res => {
