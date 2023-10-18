@@ -1,5 +1,5 @@
 // import React, { Component } from 'react';
-import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useParams, Navigate } from 'react-router-dom';
 
 import Blog from './components/Blog';
 import MyComponent from './components/MyComponent';
@@ -36,6 +36,12 @@ const Router = () => {
     )
   };
 
+  const Redirect = () => {
+    const params = useParams();
+    const { search } = params;
+    return <Navigate replace to={'/blog/search/' + search} />
+  }
+
   return (
 
     <BrowserRouter>
@@ -51,6 +57,9 @@ const Router = () => {
         <Route path="/form" element={<Form />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/blog/search/:search" element={<Search />} />
+
+        <Route path="/redirect/:search" Component={Redirect} />
+
         <Route path="/second" element={<MyComponent />} />
         <Route path="/no-component" element={(
           <>
