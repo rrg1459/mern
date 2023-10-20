@@ -252,7 +252,7 @@ textarea,
 input[type="file"] {
   width: 100%;
   min-height: 30px;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   padding: 3px;
   margin-bottom: 5px;
   transition: 300ms all;
