@@ -11,6 +11,7 @@ import Form from './components/Form';
 import Movies from './components/Movies';
 import Article from './components/Article';
 import Search from './components/Search';
+import CreateArticle from './components/CreateArticle';
 
 const Router = () => {
 
@@ -53,6 +54,7 @@ const Router = () => {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/create" element={<CreateArticle />} />
         <Route path="/blog/article/:id" element={<Article />} />
         <Route path="/form" element={<Form />} />
         <Route path="/movies" element={<Movies />} />

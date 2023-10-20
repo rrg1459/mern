@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 const Sidebar = ({ blog }) => {
 
@@ -20,7 +20,7 @@ const Sidebar = ({ blog }) => {
       {blog &&
         <div id="nav-blog" className="sidebar-item">
           <h3>You can do this</h3>
-          <a href="/" className="btn btn-success">create article</a>
+          <Link to='/blog/create/' className="btn btn-success">create article</Link>
         </div>
       }
 
