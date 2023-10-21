@@ -21,12 +21,22 @@ const CreateArticle = () => {
     })
   }
 
-  const saveArticle = (e) => {
-    e.preventDefault();
+  const saveArticle = (event) => {
+    event.preventDefault();
     axios.post(url + 'save', article)
       .then(res => {
         if (res.data.article) {
           setStatus('success');
+          if (imageRef.current.files.length) {
+            const articleId = res.data.article._id;
+            const file = imageRef.current.files[0];
+            const formData = new FormData();
+            formData.append('image', file, file.name);
+            axios.post(url + 'upload-image/' + articleId, formData)
+              .then(res => {
+                res.data.article ? setArticle(res.data.article) : setStatus('failed');
+              });
+          }
         } else {
           setStatus('failed');
         }
