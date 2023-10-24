@@ -28,7 +28,7 @@ const Article = () => {
             setArticle(false);
             setStatus('success');
           });
-      }, 1000)
+      }, 500)
     }
   }, [id, url])
 
