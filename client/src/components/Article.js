@@ -3,7 +3,7 @@ import Sidebar from './Sidebar';
 import axios from 'axios';
 import Swal from 'sweetalert2'
 import Global from '../Global';
-import { Navigate, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import Moment from 'react-moment';
 import imageDefault from '../assets/images/default.png'
 // import { fn } from 'moment';
@@ -103,7 +103,9 @@ const Article = () => {
             >
               Delete
             </button>
-            <a href="/" className="btn btn-warning">Edit</a>
+            <Link to={"/blog/edit/" + article._id} className="btn btn-warning">
+              Edit
+            </Link>
 
 
             <div className="clearfix"></div>

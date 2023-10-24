@@ -12,6 +12,7 @@ import Movies from './components/Movies';
 import Article from './components/Article';
 import Search from './components/Search';
 import CreateArticle from './components/CreateArticle';
+import EditArticle from './components/EditArticle';
 
 const Router = () => {
 
@@ -56,6 +57,7 @@ const Router = () => {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/create" element={<CreateArticle />} />
         <Route path="/blog/article/:id" element={<Article />} />
+        <Route path="/blog/edit/:id" element={<EditArticle />} />
         <Route path="/form" element={<Form />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/blog/search/:search" element={<Search />} />
