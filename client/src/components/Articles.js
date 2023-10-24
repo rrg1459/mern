@@ -29,7 +29,7 @@ const Articles = ({ home, search }) => {
             setArticles([]);
             setStatus('success');
           });
-      }, 1000)
+      }, 500)
     } else {
       axios.get(url + "articles")
         .then(res => {

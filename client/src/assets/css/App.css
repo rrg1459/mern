@@ -186,6 +186,10 @@ body {
   margin-top: 10px;
 }
 
+button {
+  margin-top: 10px;
+}
+
 .btn {
   display: block;
   background: black;
