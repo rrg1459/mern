@@ -1,10 +1,12 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
-import Global from '../Global';
 import Sidebar from './Sidebar';
-import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import Swal from 'sweetalert2'
+import Global from '../Global';
+import { Navigate, useParams } from 'react-router-dom';
 import Moment from 'react-moment';
 import imageDefault from '../assets/images/default.png'
+// import { fn } from 'moment';
 // import { Link, Navigate } from 'react-router-dom';
 
 const Article = () => {
@@ -30,7 +32,38 @@ const Article = () => {
     }
   }, [id, url])
 
-  console.log('xxx article-->: ', article);
+  const deleteArticle = () => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    })
+      .then((willDelete) => {
+        if (willDelete.isConfirmed) {
+          axios.delete(url + 'article/' + article._id)
+            .then(res => {
+              setStatus('deleted');
+              Swal.fire(
+                'Article has been deleted correctly',
+                '',
+                'success'
+              )
+            });
+        } else {
+          Swal.fire(
+            'Article has not been deleted',
+            '',
+            'success'
+          );
+        }
+      });
+  };
+
+  if (status === 'deleted') return <Navigate to='/blog' />
 
   return (
     <div className="center">
@@ -65,7 +98,11 @@ const Article = () => {
 
             <p>{article.content}</p>
 
-            <a href="/" className="btn btn-danger">Delete</a>
+            <button onClick={deleteArticle}
+              className="btn btn-danger"
+            >
+              Delete
+            </button>
             <a href="/" className="btn btn-warning">Edit</a>
 
 
