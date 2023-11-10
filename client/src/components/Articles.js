@@ -35,6 +35,10 @@ const Articles = ({ home, search }) => {
         .then(res => {
           setArticles(res.data.articles);
           setStatus('success');
+        })
+        .catch(err => {
+          setArticles([]);
+          setStatus('success');
         });
     }
   }, [url, home, search])
